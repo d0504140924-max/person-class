@@ -1,12 +1,13 @@
 from datetime import date
 class Person:
-    def __init__(self, p_id, first_name, last_name, age, birthday, phone_number=None,
-                 email=None):
+    def __init__(self, p_id, first_name, last_name, age,
+                 birthday, phone_number=None,email=None):
         assert isinstance(p_id, str)
         assert isinstance(first_name, str)
         assert isinstance(last_name, str)
         assert isinstance(age, int)
-        assert isinstance(birthday, date)
+        assert isinstance(birthday, dict)
+        assert all( i in birthday for i in ['year', 'month', 'day'])
         if phone_number is not None:
             assert isinstance(phone_number, str)
         if email is not None:
@@ -26,6 +27,9 @@ class Person:
     @property
     def contact_information(self):
         return f'{self.phone_number} {self.email}'
+    @property
+    def all_birthday(self):
+        return (f"{self.birthday['day']:02d}-{self.birthday['month']:02d}-{self.birthday['year']:02d}")
 
 
 
