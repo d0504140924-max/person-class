@@ -1,99 +1,110 @@
-from datetime import date
 class Person:
+
+
+    _first_name: str
+    _last_name: str
+    _age: int
+    _birthday: dict
+    _id: str
+    _phone_number: str
+    _email: str
+
+
     def __init__(self, id, first_name, last_name, age,
                  birthday, phone_number=None,email=None):
-        assert isinstance(id, str)
-        assert isinstance(first_name, str)
-        assert isinstance(last_name, str)
-        assert isinstance(age, int)
-        assert isinstance(birthday, dict)
-        assert all( i in birthday for i in ['year', 'month', 'day'])
-        if phone_number is not None:
-            assert isinstance(phone_number, str)
-        if email is not None:
-            assert isinstance(email, str)
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
         self.birthday = birthday
-        self.p_id = id
+        self.id = id
         self.phone_number = phone_number
         self.email = email
 
     @property
     def id(self):
-        return self.id
+        assert isinstance(id, str)
+        return self._id
     @id.setter
     def id(self, new_id):
-        self.id = new_id
+        assert isinstance(new_id, str)
+        self._id = new_id
 
 
     @property
     def first_name(self):
-        return self.first_name
+        return self._first_name
     @first_name.setter
     def first_name(self, new_name):
+        assert isinstance(new_name, str)
         self.first_name = new_name
 
 
     @property
     def last_name(self):
-        return self.last_name
+        return self._last_name
     @last_name.setter
     def last_name(self, new_last_name):
-        self.last_name = new_last_name
+        assert isinstance(new_last_name, str)
+        self._last_name = new_last_name
 
 
     @property
     def age(self):
-        return self.age
+        return self._age
     @age.setter
     def age(self, new_age):
+        assert isinstance(new_age, str)
         self.age = new_age
 
     @property
     def all_birthday(self):
-        return (f"{self.birthday['day']:02d}-{self.birthday['month']:02d}-{self.birthday['year']:02d}")
+        return (f"{self._birthday['day']:02d}-{self._birthday['month']:02d}-{self._birthday['year']:02d}")
     @all_birthday.setter
     def all_birthday(self, new_birthday):
+        assert isinstance(new_birthday, dict)
+        assert all(i in new_birthday for i in ['year', 'month', 'day'])
         self.all_birthday = new_birthday
 
 
     @property
     def phone_number(self):
-        return self.phone_number
+        return self._phone_number
     @phone_number.setter
     def phone_number(self, new_number):
+        if new_number is not None:
+            assert isinstance(new_number, str)
         self.phone_number = new_number
 
 
     @property
     def email(self):
-        return self.email
+        return self._email
     @email.setter
     def email(self, new_email):
+        if new_email is not None:
+            assert isinstance(new_email, str)
         self.email = new_email
 
 
 
     @property
     def full_name(self):
-        return f'{self.first_name} {self.last_name}'
+        return f'{self._first_name} {self._last_name}'
 
 
     @property
     def contact_information(self):
-        return f'{self.phone_number} {self.email}'
+        return f'{self._phone_number} {self._email}'
 
 
 
     def all_ditail(self):
-        return f'''{self.first_name}
-{self.last_name}
-{self.age} 
-{self.p_id}
-{self.phone_number}
-{self.email}
+        return f'''{self._first_name}
+{self._last_name}
+{self._age} 
+{self._id}
+{self._phone_number}
+{self._email}
 '''
 
 
