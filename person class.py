@@ -1,22 +1,41 @@
+from datetime import date
 class Person:
-    def __init__(self, first_name, last_name, now_age, ID_number, phone_number=None,
+    def __init__(self, p_id, first_name, last_name, age, birthday, phone_number=None,
                  email=None):
+        assert isinstance(p_id, str)
+        assert isinstance(first_name, str)
+        assert isinstance(last_name, str)
+        assert isinstance(age, int)
+        assert isinstance(birthday, date)
+        if phone_number is not None:
+            assert isinstance(phone_number, str)
+        if email is not None:
+            assert isinstance(email, str)
         self.first_name = first_name
         self.last_name = last_name
-        self.now_age = now_age
-        self.ID_number = ID_number
+        self.age = age
+        self.birthday = birthday
+        self.p_id = p_id
         self.phone_number = phone_number
         self.email = email
-    def print_the_ditails(self):
-        print(f'''{self.first_name}
+
+
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+    @property
+    def contact_information(self):
+        return f'{self.phone_number} {self.email}'
+
+
+
+    def all_ditail(self):
+        return f'''{self.first_name}
 {self.last_name}
-{self.now_age} 
-{self.ID_number}
+{self.age} 
+{self.p_id}
 {self.phone_number}
 {self.email}
-''')
-person1 = Person('david', 'rubnitz', 21,
-                 321321321, '0537195856',
-                 'd0504140924@gmail.com')
-person1.print_the_ditails()
+'''
+
 
