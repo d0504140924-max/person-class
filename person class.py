@@ -22,12 +22,11 @@ class Person:
 
     @property
     def id(self):
-        assert isinstance(id, str)
         return self._id
     @id.setter
     def id(self, new_id):
         assert isinstance(new_id, str)
-        self._id = new_id
+        self.id = new_id
 
 
     @property
@@ -45,7 +44,7 @@ class Person:
     @last_name.setter
     def last_name(self, new_last_name):
         assert isinstance(new_last_name, str)
-        self._last_name = new_last_name
+        self.last_name = new_last_name
 
 
     @property
