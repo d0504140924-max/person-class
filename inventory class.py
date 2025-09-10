@@ -2,17 +2,17 @@ from abc import ABC, abstractmethod
 class Inventory(ABC):
 
     @abstractmethod
-    def get_amount(self, item, amount):
+    def get_amount(self, item):
         pass
 
 
     @abstractmethod
-    def add_item(self, item):
+    def add_item(self, item, mun=None):
         pass
 
 
     @abstractmethod
-    def remove_item(self, item):
+    def remove_item(self, item, num=None):
         pass
 
 
@@ -22,7 +22,7 @@ class Inventory(ABC):
 
 
     @abstractmethod
-    def existing_inventory(self):
+    def show_inventory(self):
         pass
 
 
