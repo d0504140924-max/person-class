@@ -1,27 +1,29 @@
 class Product:
 
 
-    _product_id: str
+    _id: str
     _category: str
-    _product_name: str
+    _name: str
     _manufacturer:str
     _price: float
+    _cost: float
 
     def __init__(self, product_id, category, product_name, manufacturer, price):
-        self.product_id = product_id
+        self.id = product_id
         self.category = category
-        self.product_name = product_name
+        self.name = product_name
         self.manufacturer = manufacturer
         self.price = price
+        self.cost = cost
 
 
     @property
-    def product_id(self):
-        return self._product_id
-    @product_id.setter
-    def product_id(self, new_id):
+    def id(self):
+        return self._id
+    @id.setter
+    def id(self, new_id):
         assert isinstance(new_id, str)
-        self.product_id = new_id
+        self.id = new_id
 
 
     @property
@@ -34,12 +36,12 @@ class Product:
 
 
     @property
-    def product_name(self):
-        return self._product_name
-    @product_name.setter
-    def product_name(self, new_name):
+    def name(self):
+        return self._name
+    @name.setter
+    def name(self, new_name):
         assert isinstance(new_name, str)
-        self.product_name = new_name
+        self.name = new_name
 
 
     @property
@@ -58,5 +60,14 @@ class Product:
     def price(self, new_price):
         assert isinstance(new_price, float)
         self.price = new_price
+
+
+    @property
+    def cost(self):
+        return self._cost
+    @cost.setter
+    def cost(self, new_cost):
+        assert isinstance(new_cost, float)
+        self.cost = new_cost
 
 
