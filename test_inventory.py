@@ -18,7 +18,7 @@ class InventoryTest(unittest.TestCase):
             json.dump([], f)
 
         self.the_inv = TheInventory(self.inventory_file, self.items_file)
-        self.product_test = Product('2547', 'clothes', 'shirt', 'ZARA', 60, 37)
+        self.product_test = Product('2547', 'clothes', 'shirt', 'ZARA', 60.0, 37.0)
 
 
     def tearDown(self):
@@ -28,7 +28,7 @@ class InventoryTest(unittest.TestCase):
             os.remove(self.items_file)
 
 
-    def add_item_test(self):
+    def test_add_item(self):
         self.the_inv.add_item(self.product_test, num=1)
         data_file1 = self.the_inv.inventory
         self.assertTrue(any(i.get('id') == '2547' for i in data_file1))
@@ -36,7 +36,7 @@ class InventoryTest(unittest.TestCase):
         self.assertTrue(any(ii.get('name') == 'shirt' for ii in data_file2))
 
 
-    def remove_item_test(self):
+    def test_remove_item(self):
         self.the_inv.remove_item(self.product_test, num=1)
         data_file1 = self.the_inv.inventory
         self.assertFalse(any(i.get('id') == '2547' for i in data_file1))
@@ -44,13 +44,13 @@ class InventoryTest(unittest.TestCase):
         self.assertFalse(any(ii.get('name') == 'shirt' for ii in data_file2))
 
 
-    def get_amount_test(self):
+    def test_get_amount(self):
         self.the_inv.add_item(self.product_test, num=4)
         amount = self.the_inv.get_amount(self.product_test)
         self.assertEqual(amount, 3)
 
 
-    def update_amount_test(self):
+    def test_update_amount(self):
         self.the_inv.add_item(self.product_test, num=4)
         self.the_inv.update_amount(self.product_test, 10)
         amount = self.the_inv.get_amount(self.product_test)
