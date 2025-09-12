@@ -1,3 +1,7 @@
+import json
+import os
+
+
 class Product:
 
 
@@ -7,16 +11,16 @@ class Product:
     _manufacturer:str
     _price: float
     _cost: float
-    _amount: int
 
-    def __init__(self, id, category, name, manufacturer, price, cost, amount):
+
+    def __init__(self, id, category, name, manufacturer, price, cost):
         self.id = id
         self.category = category
         self.name = name
         self.manufacturer = manufacturer
         self.price = price
         self.cost = cost
-        self.amount = amount
+
 
 
     @property
@@ -73,10 +77,10 @@ class Product:
         self._cost = new_cost
 
 
-    @property
-    def amount(self):
-        return self._amount
-    @amount.setter
-    def amount(self, new_amount):
-        assert isinstance(self.amout, int)
-        self._amount = new_amount
+    def __eq__(self, other):
+        if isinstance(other, Product):
+            return self.id == other.id
+        return False
+
+
+
