@@ -49,7 +49,7 @@ class TheInventory(InventoryManage):
         else:
             with open(path, 'w') as json_file:
                 json.dump([], json_file)
-            return json.load(json_file)
+            return []
 
 
     def save_file(self, path, value):
@@ -60,39 +60,41 @@ class TheInventory(InventoryManage):
     def get_amount(self, id_item):
         for i in self.inventory:
             if id_item.id in i:
-                amount = i[id_item.id]
-        return amount
-
+                return i[id_item.id]
+        return 0
 
 
     def add_item(self, item: Product, num=1):
-        if not item.id in self.inventory:
-            data = self.inventory.append({item.id: num})
-            self.save_file(self._inventory_path, data)
-        if not item.__dict__ in self.items:
-            data = self.items.append(item.__dict__)
-            self.save_file(self._items_path, data)
+        if not item in self.inventory:
+            data = self.inventory
+            data.append({item.id:num})
+            self.save_file(self.inventory_path, data)
+        if not item in self.items:
+            data = self.items
+            data.append(item.__dict__)
+            self.save_file(self.items_path, data)
 
 
     def remove_item(self, item: Product, num=1):
-        if item.id in self.inventory:
-            for it in range(len(self.inventory)):
-                if self.inventory[it][item.id] > 0:
-                    data = self.inventory.remove(self.inventory[it])
-            self.save_file(self._inventory_path, data)
-        if item.__dict__ in self.items:
-            data = self.items.remove(item.__dict__)
-            self.save_file(self._items_path, data)
+        if item in self.inventory:
+                data = self.inventory
+                data.remove(item)
+                self.save_file(self.inventory_path, data)
+        if item in self.items:
+            data = self.items
+            data.remove(item.__dict__)
+            self.save_file(self.items_path, data)
 
 
     def update_amount(self, item: Product, new_amount):
         for i in self.inventory:
-            if item.id in i:
+            if item in i:
                 i[item.id] = new_amount
                 data = self.inventory
-                self.save_file(self._inventory_path, data)
-        else:
-            return 'no such id hes found'
+                self.save_file(self.nventory_path, data)
+            else:
+                return 'no such id hes found'
+        return 0
 
 
     def show_inventory(self):

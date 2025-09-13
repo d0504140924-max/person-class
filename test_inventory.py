@@ -2,7 +2,7 @@ import unittest
 import json
 import os
 
-from list_of_products_class import TheInventory
+from inventory_class import TheInventory
 from product_class import Product
 from inventory_abstract_class import InventoryManage
 
@@ -12,11 +12,6 @@ class InventoryTest(unittest.TestCase):
     def setUp(self):
         self.inventory_file = 'inventory.json'
         self.items_file = 'items.json'
-        with open(self.inventory_file, 'w') as f:
-            json.dump([], f)
-        with open(self.items_file, 'w') as f:
-            json.dump([], f)
-
         self.the_inv = TheInventory(self.inventory_file, self.items_file)
         self.product_test = Product('2547', 'clothes', 'shirt', 'ZARA', 60.0, 37.0)
 
@@ -47,7 +42,7 @@ class InventoryTest(unittest.TestCase):
     def test_get_amount(self):
         self.the_inv.add_item(self.product_test, num=4)
         amount = self.the_inv.get_amount(self.product_test)
-        self.assertEqual(amount, 3)
+        self.assertEqual(amount, 4)
 
 
     def test_update_amount(self):
