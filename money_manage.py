@@ -2,6 +2,8 @@ from datetime import datetime
 class MoneyManage:
 
 
+    _current_amount: (int, float)
+
 
     def __init__(self, current_amount: (int, float)=0):
         self.current_amount = current_amount
@@ -11,11 +13,11 @@ class MoneyManage:
 
     @property
     def current_amount(self):
-        return self._curren_amount
+        return self._current_amount
     @current_amount.setter
     def current_amount(self, new_amount):
         assert isinstance(new_amount, (int, float))
-        self._curren_amount = new_amount
+        self.curren_amount = new_amount
 
 
     def add_money(self, amount, _from: str):

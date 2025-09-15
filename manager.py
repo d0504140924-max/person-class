@@ -7,6 +7,12 @@ from money_manage import MoneyManage
 class Manager(Person):
 
 
+    _person: Person
+    _inventory: TheInventory
+    _item: Product
+    _money: MoneyManage
+
+
     def __init__(self, person: Person, inventory: TheInventory, item: Product, money: MoneyManage):
         super().__init__(person.id, person.first_name, person.last_name, person.age,
                  person.birthday, person.phone_number, person.email)
@@ -29,7 +35,7 @@ class Manager(Person):
         return self._inventory
     @inventory.setter
     def inventory(self, new_inventory):
-        assert isinstance(self.new_inventory, TheInventory)
+        assert isinstance(self.inventory, TheInventory)
         self.inventory = new_inventory
 
 
