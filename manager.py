@@ -5,11 +5,7 @@ class ManagerAbc(ABC):
 
 
     @abstractmethod
-    def change_price(self, new_price):
-        pass
-
-    @abstractmethod
-    def change_cost(self, new_cost):
+    def change_price(self, item: Product, new_price):
         pass
 
     @abstractmethod

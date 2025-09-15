@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 
+
 class MoneyManagerAbc(ABC):
 
 
@@ -13,11 +14,11 @@ class MoneyManagerAbc(ABC):
         pass
 
     @abstractmethod
-    def report(self):
+    def current_amount(self):
         pass
 
     @abstractmethod
-    def movements_record(self, type: str):
+    def movements_record(self, type: str, start, end):
         pass
 
     @abstractmethod
