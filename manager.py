@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from product import Product
 
 class ManagerAbc(ABC):
 

@@ -5,11 +5,11 @@ class MoneyManagerAbc(ABC):
 
 
     @abstractmethod
-    def add_money(self, amount, _from: str):
+    def deposit(self, amount):
         pass
 
     @abstractmethod
-    def withdraw(self, amount: int, _for: str, to: str=''):
+    def withdraw(self, amount: int):
         pass
 
     @abstractmethod
